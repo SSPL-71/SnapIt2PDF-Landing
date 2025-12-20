@@ -60,19 +60,19 @@
       overflow-y: auto;
     }
 
-    /* FIXED HEADER */
+    /* FIXED BACK LINK (TOP RIGHT) */
     .fixed-header {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #ffffff;
-      padding: 12px 0;
+      top: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.9);
+      padding: 10px 15px;
+      border-radius: 6px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       z-index: 9999;
     }
     .fixed-header a {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
       color: #333;
       text-decoration: none;
@@ -81,18 +81,24 @@
       text-decoration: underline;
     }
 
-    /* Push content down so header doesn't overlap */
-    .page-content {
-      margin-top: 70px;
+    /* HERO DOOR SECTION FIXED */
+    .hero {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 40vh;
+      z-index: 5000;
+      background: #87CEEB;
     }
 
     .door-container {
       position: relative;
-      width: 100vw;
-      height: 40vh;
+      width: 100%;
+      height: 100%;
       display: flex;
-      flex-wrap: wrap;
     }
+
     .door {
       position: absolute;
       width: 50%;
@@ -121,6 +127,11 @@
       font-size: 2vw;
       opacity: 0;
       transition: opacity 1.5s ease-in-out;
+    }
+
+    /* CONTENT SCROLLS UNDER HERO */
+    .page-content {
+      margin-top: 40vh;
     }
 
     .container {
@@ -164,34 +175,34 @@
 
 <body>
 
-  <!-- FIXED HEADER -->
+  <!-- FIXED BACK LINK -->
   <div class="fixed-header">
     <a href="https://ss-services.co.in">← Back to Main Page</a>
   </div>
 
+  <!-- FIXED HERO DOOR SECTION -->
+  <section class="hero">
+    <div class="door-container">
+      <div class="door left-door"></div>
+      <div class="door right-door"></div>
+      <div class="brand">
+        <img src="/static/new_logo.jpg" alt="SSPL" style="height:50px;">
+        <h2>SARVASIDDHANTA SERVICES PRIVATE LIMITED</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCROLLABLE CONTENT -->
   <div class="page-content">
 
-    <!-- Door Reveal -->
-    <section>
-      <div class="door-container">
-        <div class="door left-door"></div>
-        <div class="door right-door"></div>
-        <div class="brand">
-          <img src="{{ url_for('static', filename='new_logo.jpg') }}" alt="SSPL" style="height:50px;">
-          <h2>SARVASIDDHANTA SERVICES PRIVATE LIMITED</h2>
-        </div>
-      </div>
-    </section>
-
-    <!-- Snap2PDF Section -->
-    <main id="snap2pdf">
+    <main id="snapit2pdf">
       <div class="container">
 
         <h1>
-          <img src="{{ url_for('static', filename='icon.ico') }}"
-               alt="Snap2PDF Icon"
+          <img src="/static/icon.ico"
+               alt="SnapIt2PDF Icon"
                style="height:40px; vertical-align:middle; margin-right:10px;">
-          Snap2PDF – Convert Multiple Screenshots to PDF Instantly
+          SnapIt2PDF – Convert Multiple Screenshots to PDF Instantly
         </h1>
 
         <p><strong>Developed by SSPL</strong></p>
@@ -234,11 +245,10 @@
            title="Download Snap2PDF">
           Download SnapIt2PDF for Windows
         </a>
-        <!-- Windows-only note -->
+
         <p style="margin-top: 12px; font-size: 14px; color: #333;">
           <strong>Note:</strong> Snap2PDF works only on Windows 10/11 (64‑bit).
         </p>
-
 
       </div>
     </main>
@@ -246,6 +256,7 @@
     <footer>
       © 2025 Sarvasiddhanta Services Private Limited (SSPL). All rights reserved.
     </footer>
+
   </div>
 
 </body>
